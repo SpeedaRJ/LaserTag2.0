@@ -23,7 +23,7 @@ class App extends Application {
     }
 
     async load(uri) {
-        const scene = await new SceneLoader().loadScene('./renderEngine/scene.json');
+        const scene = await new SceneLoader().loadScene(uri);
         const builder = new SceneBuilder(scene);
         this.scene = await builder.build();
         this.physics = new Physics(this.scene);

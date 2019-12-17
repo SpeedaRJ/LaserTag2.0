@@ -2,68 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d277444-be3b-4b34-8e64-cb67ff035a35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/map.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/.travis.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/build/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/build/minimal-gltf-loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/occlusion-culling-demo.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/utility.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/webgl2-renderer-old.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/webgl2-renderer.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/gulpfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/img/drone-pbr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/img/drone.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/img/helmet-pbr.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/img/skin.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/img/viewer-screenshot-buggy-bbox.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/minimal-gltf-loader.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/shaders/fs-bbox.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/shaders/fs-cube-map.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/shaders/fs-pbr-master.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/shaders/vs-bbox.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/shaders/vs-cube-map.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/src/shaders/vs-pbr-master.glsl" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/brdfLUT.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/diffuse/bakedDiffuse_01.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/diffuse/bakedDiffuse_02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/diffuse/bakedDiffuse_03.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/diffuse/bakedDiffuse_04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/diffuse/bakedDiffuse_05.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/diffuse/bakedDiffuse_06.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/nx.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/ny.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/nz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/px.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/py.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/environment/pz.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/diffuse/diffuse_back_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/diffuse/diffuse_bottom_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/diffuse/diffuse_front_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/diffuse/diffuse_left_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/diffuse/diffuse_right_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/diffuse/diffuse_top_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/environment_back_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/environment_bottom_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/environment_front_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/environment_left_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/environment_right_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/textures/papermill/environment_top_0.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/third-party-license/glMatrix" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/webpack.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/renderEngine/GLTFLoaderRJ.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/WM_SF_Wp01_a_Normal.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/WM_SF_Wp01_i_Albedo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/untitled.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/models/scene/untitled.gltf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/models/rubics.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/renderEngine/scene.json" beforeDir="false" afterPath="$PROJECT_DIR$/renderEngine/scene.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/renderEngine/GLTFLoaderRJ.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/renderEngine/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/renderEngine/Main.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +112,8 @@
       <updated>1576394636983</updated>
       <workItem from="1576394638155" duration="24739000" />
       <workItem from="1576437115143" duration="859000" />
-      <workItem from="1576448872299" duration="7078000" />
+      <workItem from="1576448872299" duration="8577000" />
+      <workItem from="1576521463156" duration="1927000" />
     </task>
     <servers />
   </component>
@@ -165,6 +122,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="WindowStateProjectService">
     <state x="713" y="309" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1576486642317">
@@ -175,9 +133,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="544" y="28" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1576496110080" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1576489415585">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1576520927066">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576489415585" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1576520927066" />
   </component>
 </project>
