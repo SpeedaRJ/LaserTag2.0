@@ -5739,7 +5739,7 @@ var Utils = Utils || {};
     var WEIGHTS_1_LOCATION = 6; // set with GLSL layout qualifier
 
     // -- Mouse Behaviour
-    var isDisplayRotation = true;
+
     var s = 1;
     var eulerX = 0;
     var eulerY = 0;
@@ -5758,13 +5758,10 @@ var Utils = Utils || {};
         mouseButtonId = event.which;
         lastMouseY = event.clientY;
         lastMouseX = event.clientX;
-        if (mouseButtonId === 1) {
-            isDisplayRotation = false;
-        }
+
     };
     window.onmouseup = function(event) {
         mouseDown = false;
-        isDisplayRotation = true;
     };
     window.onmousemove = function(event) {
         if(!mouseDown) {
@@ -5835,39 +5832,6 @@ var Utils = Utils || {};
         } else {
             newGltfRuntimeScene = scenes[replaceScene.id] = new Scene(curGltfScene, glTF, replaceScene.id);
         }
-
-        // for (i = 0, len = glTFModelCount; i < len; i++) {
-        //     scenes.push(new Scene(curGltfScene, glTF));
-        //     // vec3.scale(tmpVec3Translate, sceneDeltaTranslate, i);
-        //     // mat4.fromTranslation(scenes[i].rootTransform, tmpVec3Translate);
-        // }
-
-
-
-        if (scenes.length === 1) {
-            // first model, adjust camera
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].identity(modelMatrix);
-
-            // center
-            s = 1.0 / Math.max( curGltfScene.boundingBox.transform[0], Math.max(curGltfScene.boundingBox.transform[5], curGltfScene.boundingBox.transform[10]) );
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].getTranslation(translate, curGltfScene.boundingBox.transform);
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].scale(translate, translate, -1);
-            translate[0] += - 0.5 * curGltfScene.boundingBox.transform[0];
-            translate[1] += - 0.5 * curGltfScene.boundingBox.transform[5];
-            translate[2] += - 0.5 * curGltfScene.boundingBox.transform[10];
-
-            s *= 0.5;
-
-            modelMatrix[0] = s;
-            modelMatrix[5] = s;
-            modelMatrix[10] = s;
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].translate(modelMatrix, modelMatrix, translate);
-
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].set(translate, 0, 0, -1.5);
-            s = 1;
-        }
-
-
 
         // var in loop
         var mesh;
@@ -6419,9 +6383,6 @@ var Utils = Utils || {};
             // mat4.mul(modelView, modelView, modelMatrix);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].identity(modelView);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].translate(modelView, modelView, translate);
-            if (isDisplayRotation) {
-                r += rotationSpeedY;
-            }
 
 
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateX(modelView, modelView, eulerX);
@@ -9309,8 +9270,6 @@ var Camera = MinimalGLTFLoader.Camera = function(c) {
     this.extensions = c.extensions !== undefined ? c.extensions : null;
     this.extras = c.extras !== undefined ? c.extras : null;
 };
-
-
 
 var Node = MinimalGLTFLoader.Node = function (n, nodeID) {
     this.name = n.name !== undefined ? n.name : null;
