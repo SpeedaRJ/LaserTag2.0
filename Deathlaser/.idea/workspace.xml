@@ -2,24 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d277444-be3b-4b34-8e64-cb67ff035a35" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture-DiffuseColor_Texture.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/DiffuseColor_Texture.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture-4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/NormalMap_Texture.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/WM_SF_Wp01_a_Normal.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/WM_SF_Wp01_i_Albedo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/untitled.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/models/scene/untitled.gltf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/renderEngine/GLTFLoaderRJ.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/renderEngine/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/renderEngine/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/webgl2-renderer.html" beforeDir="false" afterPath="$PROJECT_DIR$/minimal-gltf-loader-master/examples/webgl2-renderer.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +97,7 @@
       <workItem from="1576394638155" duration="24739000" />
       <workItem from="1576437115143" duration="859000" />
       <workItem from="1576448872299" duration="8577000" />
-      <workItem from="1576521463156" duration="1927000" />
+      <workItem from="1576521463156" duration="4664000" />
     </task>
     <servers />
   </component>
