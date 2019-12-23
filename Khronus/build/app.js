@@ -1,4 +1,4 @@
-/******/ (function(modules) { // webpackBootstrap
+(function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
 /******/
@@ -64,9 +64,8 @@
 /******/ })
 /************************************************************************/
 /******/ ([
-/* 0 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
-
+/* 1 */
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EPSILON", function() { return EPSILON; });
@@ -75,10 +74,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["setMatrixArrayType"] = setMatrixArrayType;
 /* harmony export (immutable) */ __webpack_exports__["toRadian"] = toRadian;
 /* harmony export (immutable) */ __webpack_exports__["equals"] = equals;
-/**
- * Common utilities
- * @module glMatrix
- */
 
 // Configuration Constants
 var EPSILON = 0.000001;
@@ -87,7 +82,6 @@ var RANDOM = Math.random;
 
 /**
  * Sets the type of array used when creating new vectors and matrices
- *
  * @param {Type} type Array type, such as Float32Array or Array
  */
 function setMatrixArrayType(type) {
@@ -98,7 +92,6 @@ var degree = Math.PI / 180;
 
 /**
  * Convert Degree To Radian
- *
  * @param {Number} a Angle in Degrees
  */
 function toRadian(a) {
@@ -119,7 +112,6 @@ function equals(a, b) {
 }
 
 /***/ }),
-/* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -144,23 +136,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "vec2", function() { return __WEBPACK_IMPORTED_MODULE_7__gl_matrix_vec2_js__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "vec3", function() { return __WEBPACK_IMPORTED_MODULE_8__gl_matrix_vec3_js__; });
 /* harmony reexport (module object) */ __webpack_require__.d(__webpack_exports__, "vec4", function() { return __WEBPACK_IMPORTED_MODULE_9__gl_matrix_vec4_js__; });
-
-
-
-
-
-
-
-
-
-
-
-
-
 /***/ }),
-/* 2 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
-
+/* 2 */
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["create"] = create;
@@ -197,7 +175,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sub", function() { return sub; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_js__ = __webpack_require__(0);
 
-
 /**
  * 3x3 Matrix
  * @module mat3
@@ -205,7 +182,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /**
  * Creates a new identity mat3
- *
  * @returns {mat3} a new 3x3 matrix
  */
 function create() {
@@ -226,7 +202,6 @@ function create() {
 
 /**
  * Copies the upper-left 3x3 values into the given mat3.
- *
  * @param {mat3} out the receiving 3x3 matrix
  * @param {mat4} a   the source 4x4 matrix
  * @returns {mat3} out
@@ -246,7 +221,6 @@ function fromMat4(out, a) {
 
 /**
  * Creates a new mat3 initialized with values from an existing matrix
- *
  * @param {mat3} a matrix to clone
  * @returns {mat3} a new 3x3 matrix
  */
@@ -266,7 +240,6 @@ function clone(a) {
 
 /**
  * Copy the values from one mat3 to another
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the source matrix
  * @returns {mat3} out
@@ -286,7 +259,6 @@ function copy(out, a) {
 
 /**
  * Create a new mat3 with the given values
- *
  * @param {Number} m00 Component in column 0, row 0 position (index 0)
  * @param {Number} m01 Component in column 0, row 1 position (index 1)
  * @param {Number} m02 Component in column 0, row 2 position (index 2)
@@ -314,7 +286,6 @@ function fromValues(m00, m01, m02, m10, m11, m12, m20, m21, m22) {
 
 /**
  * Set the components of a mat3 to the given values
- *
  * @param {mat3} out the receiving matrix
  * @param {Number} m00 Component in column 0, row 0 position (index 0)
  * @param {Number} m01 Component in column 0, row 1 position (index 1)
@@ -342,7 +313,6 @@ function set(out, m00, m01, m02, m10, m11, m12, m20, m21, m22) {
 
 /**
  * Set a mat3 to the identity matrix
- *
  * @param {mat3} out the receiving matrix
  * @returns {mat3} out
  */
@@ -361,7 +331,6 @@ function identity(out) {
 
 /**
  * Transpose the values of a mat3
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the source matrix
  * @returns {mat3} out
@@ -395,7 +364,6 @@ function transpose(out, a) {
 
 /**
  * Inverts a mat3
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the source matrix
  * @returns {mat3} out
@@ -437,7 +405,6 @@ function invert(out, a) {
 
 /**
  * Calculates the adjugate of a mat3
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the source matrix
  * @returns {mat3} out
@@ -467,7 +434,6 @@ function adjoint(out, a) {
 
 /**
  * Calculates the determinant of a mat3
- *
  * @param {mat3} a the source matrix
  * @returns {Number} determinant of a
  */
@@ -487,7 +453,6 @@ function determinant(a) {
 
 /**
  * Multiplies two mat3's
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the first operand
  * @param {mat3} b the second operand
@@ -530,7 +495,6 @@ function multiply(out, a, b) {
 
 /**
  * Translate a mat3 by the given vector
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the matrix to translate
  * @param {vec2} v vector to translate by
@@ -565,7 +529,6 @@ function translate(out, a, v) {
 
 /**
  * Rotates a mat3 by the given angle
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
@@ -600,7 +563,6 @@ function rotate(out, a, rad) {
 
 /**
  * Scales the mat3 by the dimensions in the given vec2
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the matrix to rotate
  * @param {vec2} v the vec2 to scale the matrix by
@@ -705,7 +667,6 @@ function fromScaling(out, v) {
 
 /**
  * Copies the values from a mat2d into a mat3
- *
  * @param {mat3} out the receiving matrix
  * @param {mat2d} a the matrix to copy
  * @returns {mat3} out
@@ -727,7 +688,6 @@ function fromMat2d(out, a) {
 
 /**
 * Calculates a 3x3 matrix from the given quaternion
-*
 * @param {mat3} out mat3 receiving operation result
 * @param {quat} q Quaternion to create matrix from
 *
@@ -769,7 +729,6 @@ function fromQuat(out, q) {
 
 /**
 * Calculates a 3x3 normal matrix (transpose inverse) from the 4x4 matrix
-*
 * @param {mat3} out mat3 receiving operation result
 * @param {mat4} a Mat4 to derive the normal matrix from
 *
@@ -831,7 +790,6 @@ function normalFromMat4(out, a) {
 
 /**
  * Generates a 2D projection matrix with the given bounds
- *
  * @param {mat3} out mat3 frustum matrix will be written into
  * @param {number} width Width of your gl context
  * @param {number} height Height of gl context
@@ -852,7 +810,6 @@ function projection(out, width, height) {
 
 /**
  * Returns a string representation of a mat3
- *
  * @param {mat3} a matrix to represent as a string
  * @returns {String} string representation of the matrix
  */
@@ -862,7 +819,6 @@ function str(a) {
 
 /**
  * Returns Frobenius norm of a mat3
- *
  * @param {mat3} a the matrix to calculate Frobenius norm of
  * @returns {Number} Frobenius norm
  */
@@ -872,7 +828,6 @@ function frob(a) {
 
 /**
  * Adds two mat3's
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the first operand
  * @param {mat3} b the second operand
@@ -893,7 +848,6 @@ function add(out, a, b) {
 
 /**
  * Subtracts matrix b from matrix a
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the first operand
  * @param {mat3} b the second operand
@@ -914,7 +868,6 @@ function subtract(out, a, b) {
 
 /**
  * Multiply each element of the matrix by a scalar.
- *
  * @param {mat3} out the receiving matrix
  * @param {mat3} a the matrix to scale
  * @param {Number} b amount to scale the matrix's elements by
@@ -935,7 +888,6 @@ function multiplyScalar(out, a, b) {
 
 /**
  * Adds two mat3's after multiplying each element of the second operand by a scalar value.
- *
  * @param {mat3} out the receiving vector
  * @param {mat3} a the first operand
  * @param {mat3} b the second operand
@@ -957,7 +909,6 @@ function multiplyScalarAndAdd(out, a, b, scale) {
 
 /**
  * Returns whether or not the matrices have exactly the same elements in the same position (when compared with ===)
- *
  * @param {mat3} a The first matrix.
  * @param {mat3} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
@@ -968,7 +919,6 @@ function exactEquals(a, b) {
 
 /**
  * Returns whether or not the matrices have approximately the same elements in the same position.
- *
  * @param {mat3} a The first matrix.
  * @param {mat3} b The second matrix.
  * @returns {Boolean} True if the matrices are equal, false otherwise.
@@ -1008,9 +958,8 @@ var mul = multiply;
 var sub = subtract;
 
 /***/ }),
-/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
-
+/* 3 */
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["create"] = create;
@@ -1062,7 +1011,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "sub", function() { return sub; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common_js__ = __webpack_require__(0);
 
-
 /**
  * 4x4 Matrix<br>Format: column-major, when typed out it looks like row-major<br>The matrices are being post multiplied.
  * @module mat4
@@ -1070,7 +1018,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /**
  * Creates a new identity mat4
- *
  * @returns {mat4} a new 4x4 matrix
  */
 function create() {
@@ -1098,7 +1045,6 @@ function create() {
 
 /**
  * Creates a new mat4 initialized with values from an existing matrix
- *
  * @param {mat4} a matrix to clone
  * @returns {mat4} a new 4x4 matrix
  */
@@ -1125,7 +1071,6 @@ function clone(a) {
 
 /**
  * Copy the values from one mat4 to another
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the source matrix
  * @returns {mat4} out
@@ -1152,7 +1097,6 @@ function copy(out, a) {
 
 /**
  * Create a new mat4 with the given values
- *
  * @param {Number} m00 Component in column 0, row 0 position (index 0)
  * @param {Number} m01 Component in column 0, row 1 position (index 1)
  * @param {Number} m02 Component in column 0, row 2 position (index 2)
@@ -1194,7 +1138,6 @@ function fromValues(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, 
 
 /**
  * Set the components of a mat4 to the given values
- *
  * @param {mat4} out the receiving matrix
  * @param {Number} m00 Component in column 0, row 0 position (index 0)
  * @param {Number} m01 Component in column 0, row 1 position (index 1)
@@ -1236,7 +1179,6 @@ function set(out, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m3
 
 /**
  * Set a mat4 to the identity matrix
- *
  * @param {mat4} out the receiving matrix
  * @returns {mat4} out
  */
@@ -1262,7 +1204,6 @@ function identity(out) {
 
 /**
  * Transpose the values of a mat4
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the source matrix
  * @returns {mat4} out
@@ -1313,7 +1254,6 @@ function transpose(out, a) {
 
 /**
  * Inverts a mat4
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the source matrix
  * @returns {mat4} out
@@ -1379,7 +1319,6 @@ function invert(out, a) {
 
 /**
  * Calculates the adjugate of a mat4
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the source matrix
  * @returns {mat4} out
@@ -1423,7 +1362,6 @@ function adjoint(out, a) {
 
 /**
  * Calculates the determinant of a mat4
- *
  * @param {mat4} a the source matrix
  * @returns {Number} determinant of a
  */
@@ -1464,7 +1402,6 @@ function determinant(a) {
 
 /**
  * Multiplies two mat4s
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the first operand
  * @param {mat4} b the second operand
@@ -1520,7 +1457,6 @@ function multiply(out, a, b) {
 
 /**
  * Translate a mat4 by the given vector
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the matrix to translate
  * @param {vec3} v vector to translate by
@@ -1568,7 +1504,6 @@ function translate(out, a, v) {
 
 /**
  * Scales the mat4 by the dimensions in the given vec3 not using vectorization
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the matrix to scale
  * @param {vec3} v the vec3 to scale the matrix by
@@ -1600,7 +1535,6 @@ function scale(out, a, v) {
 
 /**
  * Rotates a mat4 by the given angle around the given axis
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
@@ -1685,7 +1619,6 @@ function rotate(out, a, rad, axis) {
 
 /**
  * Rotates a matrix by the given angle around the X axis
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
@@ -1729,7 +1662,6 @@ function rotateX(out, a, rad) {
 
 /**
  * Rotates a matrix by the given angle around the Y axis
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
@@ -1773,7 +1705,6 @@ function rotateY(out, a, rad) {
 
 /**
  * Rotates a matrix by the given angle around the Z axis
- *
  * @param {mat4} out the receiving matrix
  * @param {mat4} a the matrix to rotate
  * @param {Number} rad the angle to rotate the matrix by
@@ -2352,10 +2283,8 @@ function fromRotationTranslationScaleOrigin(out, q, v, s, o) {
 
 /**
  * Calculates a 4x4 matrix from the given quaternion
- *
  * @param {mat4} out mat4 receiving operation result
  * @param {quat} q Quaternion to create matrix from
- *
  * @returns {mat4} out
  */
 function fromQuat(out, q) {
@@ -2402,7 +2331,6 @@ function fromQuat(out, q) {
 
 /**
  * Generates a frustum matrix with the given bounds
- *
  * @param {mat4} out mat4 frustum matrix will be written into
  * @param {Number} left Left bound of the frustum
  * @param {Number} right Right bound of the frustum
@@ -2438,7 +2366,6 @@ function frustum(out, left, right, bottom, top, near, far) {
 /**
  * Generates a perspective projection matrix with the given bounds.
  * Passing null/undefined/no value for far will generate infinite projection matrix.
- *
  * @param {mat4} out mat4 frustum matrix will be written into
  * @param {number} fovy Vertical field of view in radians
  * @param {number} aspect Aspect ratio. typically viewport width/height
@@ -2478,7 +2405,6 @@ function perspective(out, fovy, aspect, near, far) {
  * Generates a perspective projection matrix with the given field of view.
  * This is primarily useful for generating projection matrices to be used
  * with the still experiemental WebVR API.
- *
  * @param {mat4} out mat4 frustum matrix will be written into
  * @param {Object} fov Object containing the following values: upDegrees, downDegrees, leftDegrees, rightDegrees
  * @param {number} near Near bound of the frustum
@@ -2514,7 +2440,6 @@ function perspectiveFromFieldOfView(out, fov, near, far) {
 
 /**
  * Generates a orthogonal projection matrix with the given bounds
- *
  * @param {mat4} out mat4 frustum matrix will be written into
  * @param {number} left Left bound of the frustum
  * @param {number} right Right bound of the frustum
@@ -2550,7 +2475,6 @@ function ortho(out, left, right, bottom, top, near, far) {
 /**
  * Generates a look-at matrix with the given eye position, focal point, and up axis.
  * If you want a matrix that actually makes an object look at another object, you should use targetTo instead.
- *
  * @param {mat4} out mat4 frustum matrix will be written into
  * @param {vec3} eye Position of the viewer
  * @param {vec3} center Point the viewer is looking at
@@ -2644,7 +2568,6 @@ function lookAt(out, eye, center, up) {
 
 /**
  * Generates a matrix that makes something look at something else.
- *
  * @param {mat4} out mat4 frustum matrix will be written into
  * @param {vec3} eye Position of the viewer
  * @param {vec3} center Point the viewer is looking at
@@ -2704,7 +2627,6 @@ function targetTo(out, eye, target, up) {
 
 /**
  * Returns a string representation of a mat4
- *
  * @param {mat4} a matrix to represent as a string
  * @returns {String} string representation of the matrix
  */
@@ -2948,10 +2870,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mat3_js__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__vec3_js__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__vec4_js__ = __webpack_require__(6);
-
-
-
-
 
 /**
  * Quaternion
@@ -5114,7 +5032,7 @@ var forEach = function () {
 }();
 
 /***/ }),
-/* 7 */
+/* 7 - shaders and scene */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5124,10 +5042,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__css_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__css_style_css__);
 
 var MinimalGLTFLoader = __webpack_require__(12);
-// require('./lib/minimal-gltf-loader.js');
-
-
-
+// require('./lib/minimal-gltf-loader.js')
 
 // utils
 var Utils = Utils || {};
@@ -5202,9 +5117,6 @@ var Utils = Utils || {};
 })();
 
 
-
-
-
 (function()  {
     'use strict';
 
@@ -5214,8 +5126,8 @@ var Utils = Utils || {};
     var curAnimationId = 0;
     var playAllAnimationTogether = true;
 
-
     var canvas = document.createElement('canvas');
+    canvas.requestPointerLock();
     // canvas.width = Math.min(window.innerWidth, window.innerHeight);
     // canvas.height = canvas.width;
     canvas.width = window.innerWidth;
@@ -5307,26 +5219,11 @@ var Utils = Utils || {};
         })()
     };
 
-
-
     var defaultSampler = gl.createSampler();
     gl.samplerParameteri(defaultSampler, gl.TEXTURE_MIN_FILTER, gl.NEAREST_MIPMAP_LINEAR);
     gl.samplerParameteri(defaultSampler, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
     gl.samplerParameteri(defaultSampler, gl.TEXTURE_WRAP_S, gl.REPEAT);
     gl.samplerParameteri(defaultSampler, gl.TEXTURE_WRAP_T, gl.REPEAT);
-    // gl.samplerParameteri(defaultSampler, gl.TEXTURE_WRAP_R, gl.REPEAT);
-    // gl.samplerParameterf(defaultSampler, gl.TEXTURE_MIN_LOD, -1000.0);
-    // gl.samplerParameterf(defaultSampler, gl.TEXTURE_MAX_LOD, 1000.0);
-    // gl.samplerParameteri(defaultSampler, gl.TEXTURE_COMPARE_MODE, gl.NONE);
-    // gl.samplerParameteri(defaultSampler, gl.TEXTURE_COMPARE_FUNC, gl.LEQUAL);
-
-
-
-
-
-
-
-
     BOUNDING_BOX.uniformMvpLocation = gl.getUniformLocation(BOUNDING_BOX.program, "u_MVP");
 
     gl.bindVertexArray(BOUNDING_BOX.vertexArray);
@@ -5351,9 +5248,6 @@ var Utils = Utils || {};
                 0,        // Level of details
                 gl.RG16F, // Format
                 gl.RG,
-                // gl.RGBA, // Format
-                // gl.RGBA,
-                // gl.UNSIGNED_BYTE, // Size of each channel
                 gl.FLOAT,
                 img
             );
@@ -5393,21 +5287,6 @@ var Utils = Utils || {};
             './common/textures/environment/diffuse/bakedDiffuse_05.jpg',
             './common/textures/environment/diffuse/bakedDiffuse_06.jpg',
 
-            // '../textures/papermill/environment_right_0.jpg',
-            // '../textures/papermill/environment_left_0.jpg',
-            // '../textures/papermill/environment_top_0.jpg',
-            // '../textures/papermill/environment_bottom_0.jpg',
-            // '../textures/papermill/environment_front_0.jpg',
-            // '../textures/papermill/environment_back_0.jpg',
-
-            // '../textures/papermill/diffuse/diffuse_right_0.jpg',
-            // '../textures/papermill/diffuse/diffuse_left_0.jpg',
-            // '../textures/papermill/diffuse/diffuse_top_0.jpg',
-            // '../textures/papermill/diffuse/diffuse_bottom_0.jpg',
-            // '../textures/papermill/diffuse/diffuse_front_0.jpg',
-            // '../textures/papermill/diffuse/diffuse_back_0.jpg',
-
-            // @tmp, ugly, load brdfLUT here
             './common/textures/brdfLUT.png'
         ],
 
@@ -5628,7 +5507,6 @@ var Utils = Utils || {};
             return;
         }
 
-
         // new program
 
         var vsDefine = '';
@@ -5658,7 +5536,6 @@ var Utils = Utils || {};
         if (this.flags & Shader_Static.bitMasks.HAS_EMISSIVEMAP) {
             fsDefine += '#define HAS_EMISSIVEMAP\n';
         }
-
 
         // concat
         var vertexShaderSource =
@@ -5748,55 +5625,16 @@ var Utils = Utils || {};
     var translate = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].create();
     // var t = -5;
     var modelMatrix = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].create();
-    var mouseDown = false;
+    var mouseDown = true;
     var mouseButtonId = 0;
     var lastMouseY = 0;
     var lastMouseX = 0;
     var identityQ = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["quat"].create();
-    window.onmousedown = function(event) {
-        mouseDown = true;
-        mouseButtonId = event.which;
-        lastMouseY = event.clientY;
-        lastMouseX = event.clientX;
 
-    };
-    window.onmouseup = function(event) {
-        mouseDown = false;
-    };
-    window.onmousemove = function(event) {
-        if(!mouseDown) {
-            return;
-        }
-        var newY = event.clientY;
-        var newX = event.clientX;
-
-        var deltaY = newY - lastMouseY;
-        var deltaX = newX - lastMouseX;
-
-        // s *= (1 + deltaY / 1000);
-
-        switch(mouseButtonId) {
-            case 1:
-            // left: rotation
-            eulerX += -deltaY * 0.01;
-            eulerY += deltaX * 0.01;
-            break;
-            case 3:
-            // right
-            translate[0] += deltaX * 0.001;
-            translate[1] += -deltaY * 0.001;
-            break;
-        }
-
-
-        lastMouseY = newY;
-        lastMouseX = newX;
-    };
-    window.onwheel = function(event) {
-        translate[2] += -event.deltaY * 0.001;
-        // translate[2] *= 1 + (-event.deltaY * 0.01);
-    };
-
+  //translate[0] = 1.1333999633789062;
+  //translate[1] = -7.229942321777344;
+  //translate[2] = 23.901697158813477;
+  let keydown = false;
 
     // 2.0
     // var gltfUrl = '../glTFs/glTF_version_2/Duck/glTF/Duck.gltf';
@@ -5820,8 +5658,8 @@ var Utils = Utils || {};
 
         // ----------------
 
-        var curGltfScene = glTF.scenes[glTF.defaultScene];
 
+      var curGltfScene = glTF.scenes[glTF.defaultScene];
         var sceneDeltaTranslate = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].fromValues(curGltfScene.boundingBox.transform[0] * 1.2, 0, 0);
         var tmpVec3Translate = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].create();
 
@@ -6009,22 +5847,19 @@ var Utils = Utils || {};
         return newGltfRuntimeScene;
     }
 
-
-
-
     // -- Render preparation
     gl.enable(gl.DEPTH_TEST);
     gl.depthFunc(gl.LEQUAL);
-
-
 
     var Renderer = Renderer || {};
 
     var program = null; // current program object
 
+    var robot = [];
+    var world = [];
+
     (function() {
         'use strict';
-
 
         var scale = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].create();
 
@@ -6148,8 +5983,6 @@ var Utils = Utils || {};
             gl.activeTexture(gl.TEXTURE0 + BRDF_LUT.textureIndex);
             gl.bindTexture(gl.TEXTURE_2D, BRDF_LUT.texture);
 
-            // console.log( (gl.getTexParameter(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S)).toString(16) );
-
             gl.activeTexture(gl.TEXTURE0 + CUBE_MAP.textureIndex);
             gl.bindTexture(gl.TEXTURE_CUBE_MAP, CUBE_MAP.texture);
 
@@ -6216,10 +6049,6 @@ var Utils = Utils || {};
                     __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(tmpMat4, nodeMatrix[jointNode.nodeID], skin.inverseBindMatrix[i]);
                     __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(tmpMat4, inverseTransformMat4, tmpMat4);
 
-                    // if (skin.skeleton !== null) {
-                    //     mat4.mul(tmpMat4, inverseSkeletonRootMat4, tmpMat4);
-                    // }
-
                     skin.jointMatrixUnidormBufferData.set(tmpMat4, i * 16);
                 }
 
@@ -6232,17 +6061,11 @@ var Utils = Utils || {};
 
             // draw cur node's mesh
             if (node.mesh !== null) {
-                // drawMesh(glTF.meshes[node.mesh], matrix);
-
-                // var mesh = glTF.meshes[node.mesh];
                 var mesh = node.mesh;
                 for (i = 0, len = mesh.primitives.length; i < len; i++) {
                     // draw primitive
                     drawPrimitive(mesh.primitives[i], matrix);
                 }
-
-                // BOUNDING_BOX.draw(mesh.boundingBox, matrix, modelView, perspective);
-                // gl.useProgram(program);
             }
 
             if (node.skin !== null) {
@@ -6254,8 +6077,6 @@ var Utils = Utils || {};
 
             var childNodeID;
             for (i = 0, len = node.children.length; i < len; i++) {
-                // childNodeID = node.children[i];
-                // drawNode(glTF.nodes[childNodeID], childNodeID, matrix);
                 drawNode(node.children[i], node.children[i].nodeID, nodeMatrix, matrix);
             }
         }
@@ -6333,7 +6154,6 @@ var Utils = Utils || {};
                     gl.drawArrays(gl.LINES, 0, 24);
                 }
                 else if (node.mesh !== null) {
-                    // mesh = glTF.meshes[node.mesh];
                     mesh = node.mesh;
 
                     if (bboxType == 'aabb') {
@@ -6353,11 +6173,6 @@ var Utils = Utils || {};
                 }
             }
 
-            // // scene bounding box
-            // mat4.mul(localMVP, scene.rootTransform, scene.glTFScene.boundingBox.transform);
-            // mat4.mul(localMVP, VP, localMVP);
-            // gl.uniformMatrix4fv(BOUNDING_BOX.uniformMvpLocation, false, localMVP);
-            // gl.drawArrays(gl.LINES, 0, 24);
         }
 
 
@@ -6376,14 +6191,8 @@ var Utils = Utils || {};
             gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
 
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].set(scale, s, s, s);
-            // mat4.identity(modelView);
-            // mat4.translate(modelView, modelView, translate);
-            // mat4.scale(modelView, modelView, scale);
-            // mat4.fromRotationTranslationScale(modelView, identityQ, translate, scale);
-            // mat4.mul(modelView, modelView, modelMatrix);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].identity(modelView);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].translate(modelView, modelView, translate);
-
 
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateX(modelView, modelView, eulerX);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(modelView, modelView, r);
@@ -6392,8 +6201,6 @@ var Utils = Utils || {};
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(modelView, modelView, modelMatrix);
 
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(modelView, modelView, eulerY);
-
-
 
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(VP, perspective, modelView);
 
@@ -6416,7 +6223,6 @@ var Utils = Utils || {};
                 gl.bindVertexArray(null);
             }
 
-
             // cube map
 
             CUBE_MAP.draw(modelView, perspective);
@@ -6437,10 +6243,156 @@ var Utils = Utils || {};
         });
     };
 
+  window.onwheel = function(event) {
+    translate[2] += -event.deltaY * 0.001;
+    // translate[2] *= 1 + (-event.deltaY * 0.01);
+  };
+    window.onmousemove = function( e ){
+      if(document.pointerLockElement === canvas ||
+          document.mozPointerLockElement === canvas) {
+
+        const dx = e.movementX;
+        const dy = e.movementY;
+        eulerX += dy * 0.001;
+        eulerY += dx * 0.001;
+      }
+    };
+  window.onmousedown = function(event) {
+    let a = document.querySelector("canvas"); a.requestPointerLock();
+    scenes[ 0 ].glTF.nodes[125].matrix[12] = 0;
+    scenes[ 0 ].glTF.nodes[125].matrix[13] = 0;
+    scenes[ 0 ].glTF.nodes[125].matrix[14] = 0;
+    console.log(scenes[0]);
+
+  };
+  /*
+  window.onmouseup = function(event) {
+    mouseDown = false;
+  };
+  window.onwheel = function(event) {
+    translate[2] += -event.deltaY * 0.001;
+    // translate[2] *= 1 + (-event.deltaY * 0.01);
+  };
+  window.onmousemove = function(event) {
+    if(!mouseDown) {
+      return;
+    }
+    var newY = event.clientY;
+    var newX = event.clientX;
+
+    var deltaY = newY - lastMouseY;
+    var deltaX = newX - lastMouseX;
+
+    // s *= (1 + deltaY / 1000);
+
+    switch(mouseButtonId) {
+      case 1:
+        // left: rotation
+        eulerX += deltaY * 0.01;
+        eulerY += deltaX * 0.01;
+        break;
+      case 3:
+        // right
+        translate[0] += deltaX * 0.001;
+        translate[1] += -deltaY * 0.001;
+        break;
+    }
+
+    lastMouseY = newY;
+    lastMouseX = newX;
+  };*/
+
+  window.onload = function( e ){
+  };
+  window.onkeydown = function( event ){ //TODO BROWSER INDEPENDENT KEYMAPPING, prevent space default
+    //TODO MOVE THIS CONSTANT
+    const playerspeed = 0.05;
+    function collision(){
+      let collision = false;
+      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
+        if(scenes[0].glTFScene.nodes[58].bvh.min[0] < scenes[0].glTFScene.nodes[i].bvh.min[0]) {
+          collision = true;
+          console.log(scenes[0].glTF.nodes[i]);
+          return collision;
+        }
+      }
+      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
+        if(scenes[0].glTFScene.nodes[58].bvh.min[1] < scenes[0].glTFScene.nodes[i].bvh.min[1]){
+          collision = true;
+          console.log(scenes[0].glTF.nodes[i] + " second< ");
+          return collision;
+        }
+      }
+      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
+        if(scenes[0].glTFScene.nodes[58].bvh.min[2] < scenes[0].glTFScene.nodes[i].bvh.min[2]){
+          collision = true;
+          console.log(scenes[0].glTF.nodes[i] + " third ");
+          return collision;
+        }
+      }
+      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
+        if(scenes[0].glTFScene.nodes[58].bvh.max[0] > scenes[0].glTFScene.nodes[i].bvh.max[0]){
+          console.log(scenes[0].glTF.nodes[i] + " forth ");
+          collision = true;
+          return collision;
+        }
+      }
+      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
+        if(scenes[0].glTFScene.nodes[58].bvh.max[1] > scenes[0].glTFScene.nodes[i].bvh.max[1]){
+          console.log(scenes[0].glTF.nodes[i] + " fifth " );
+          collision = true;
+          return collision;
+        }
+      }
+      for(let i = 1; i < scenes[0].glTF.nodes.length - 1; i++){
+        if(scenes[0].glTF.nodes[58].bvh.max[2] > scenes[0].glTF.nodes[i].bvh.max[2]){
+          console.log(scenes[0].glTF.nodes[i] + " sixth " );
+          collision = true;
+          return collision;
+        }
+      }
+      return collision;
+    }
+    if(!collision()) {
+      keydown = true;
+      if (event.key == "w") {
+        translate[2] += playerspeed;
+      }
+      if (event.key == "s") {
+        translate[2] -= playerspeed;
+      }
+      if (event.key == "d") {
+        translate[0] -= playerspeed;
+      }
+      if (event.key == "a") {
+        translate[0] += playerspeed;
+      }
+      if (event.key == " ") {
+        translate[1] -= playerspeed;
+      }
+      scenes[0].glTF.nodes[125].matrix[12] = -translate[0] - 3;
+      scenes[0].glTF.nodes[125].matrix[13] = -translate[1] - 1.5;
+      scenes[0].glTF.nodes[125].matrix[14] = -translate[2] - 1;
+      scenes[0].glTF.nodes[125].bvh.min[0] = -translate[0] + 0.07;
+      scenes[0].glTF.nodes[125].bvh.min[1] = -translate[1] + 0.07;
+      scenes[0].glTF.nodes[125].bvh.min[2] = -translate[2] + 0.07;
+      scenes[0].glTF.nodes[125].bvh.max[0] = -translate[2] + 0.7;
+      scenes[0].glTF.nodes[125].bvh.max[1] = -translate[2] + 0.7;
+      scenes[0].glTF.nodes[125].bvh.max[2] = -translate[2] + 0.7;
+      scenes[0].glTF.nodes[125].bvh.transform[12] = -translate[0] + 0.07;
+      scenes[0].glTF.nodes[125].bvh.transform[13] = -translate[1] + 0.07;
+      scenes[0].glTF.nodes[125].bvh.transform[14] = -translate[2] + 0.07;
+    }
+
+  };
+  window.onkeyup = function( event ){
+    keydown = false;
+  };
     CUBE_MAP.loadAll();
 
-})();
 
+
+})();
 
 /***/ }),
 /* 8 */
@@ -8998,7 +8950,7 @@ var forEach = function () {
 }();
 
 /***/ }),
-/* 12 */
+/* 12  - game functions aka the useful shit*/
 /***/ (function(module, exports, __webpack_require__) {
 
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -9256,6 +9208,7 @@ BufferView.prototype.bindData = function(gl) {
 
 
 var Camera = MinimalGLTFLoader.Camera = function(c) {
+    this.lobu = c;
     this.name = c.name !== undefined ? c.name : null;
     this.type = c.type; // required
 
@@ -9269,6 +9222,22 @@ var Camera = MinimalGLTFLoader.Camera = function(c) {
 
     this.extensions = c.extensions !== undefined ? c.extensions : null;
     this.extras = c.extras !== undefined ? c.extras : null;
+
+    function updateCamera(c) {
+        this.name = c.name !== undefined ? c.name : null;
+        this.type = c.type; // required
+
+        this.othographic = c.othographic === undefined ? null : c.othographic;  // every attribute inside is required (excluding extensions)
+        this.perspective = c.perspective === undefined ? null : {
+          yfov: c.perspective.yfov,
+          znear: c.perspective.znear,
+          zfar: c.perspective.zfar !== undefined ? c.perspective.zfar : null,
+        aspectRatio: c.perspective.aspectRatio !== undefined ? c.perspective.aspectRatio : null
+      };
+
+      this.extensions = c.extensions !== undefined ? c.extensions : null;
+      this.extras = c.extras !== undefined ? c.extras : null;
+    }
 };
 
 var Node = MinimalGLTFLoader.Node = function (n, nodeID) {
@@ -9740,12 +9709,7 @@ var SkinLink = MinimalGLTFLoader.SkinLink = function (gltf, linkedSkin, inverseB
         }
     }
 
-
-
 };
-
-
-
 
 // animation has no potential plan for progressive rendering I guess
 // so everything happens after all buffers are loaded
@@ -9840,14 +9804,10 @@ AnimationSampler.prototype.getValue = function (t) {
     }
 };
 
-
-
 var Animation = MinimalGLTFLoader.Animation = function (gltf, a) {
     this.name = a.name !== undefined ? a.name : null;
 
     var i, len;
-
-
 
     this.samplers = []; // required, array of animation sampler
 
@@ -9928,8 +9888,6 @@ var glTFModel = MinimalGLTFLoader.glTFModel = function (gltf) {
     this.extras = gltf.extras !== undefined ? gltf.extras : null;
 
 };
-
-
 
 var gl;
 
@@ -10242,8 +10200,6 @@ glTFLoader.prototype._postprocess = function () {
 
         }
     }
-
-
 };
 
 
@@ -10266,10 +10222,7 @@ var Type2NumOfComponent = {
     'MAT4': 16
 };
 
-
 // ------ Scope limited private util functions---------------
-
-
 // for animation use
 function _arrayBuffer2TypedArray(buffer, byteOffset, countOfComponentType, componentType) {
     switch(componentType) {
@@ -10881,31 +10834,7 @@ module.exports = function (css) {
   var currentDir = baseUrl + location.pathname.replace(/\/[^\/]*$/, "/");
 
 	// convert each url(...)
-	/*
-	This regular expression is just a way to recursively match brackets within
-	a string.
 
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
-	   (  = Start a capturing group
-	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
-	         |  = OR
-	         \(  = Match a start parentheses
-	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
-	                 |  = OR
-	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
-	                 \)  = Match a end parentheses
-	             )  = End Group
-              *\) = Match anything and then a close parens
-          )  = Close non-capturing group
-          *  = Match anything
-       )  = Close capturing group
-	 \)  = Match a close parens
-
-	 /gi  = Get all matches, not the first.  Be case insensitive.
-	 */
 	var fixedCss = css.replace(/url\s*\(((?:[^)(]|\((?:[^)(]+|\([^)(]*\))*\))*)\)/gi, function(fullMatch, origUrl) {
 		// strip quotes (if they exist)
 		var unquotedOrigUrl = origUrl
