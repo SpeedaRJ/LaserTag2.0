@@ -1,3 +1,30 @@
+let Cam = {
+  "lookAtPoint": function( x, y, z ){
+    let yaw = Math.atan(y/x);
+    let pitch = Math.atan( Math.sqrt(x*x+y*y)/z );
+    return {}
+  }
+
+};
+let lookatTranslation=[0,1.6,-7];
+let enumanimations = {
+  "idle":4,
+  "walk":8,
+  "lwalk45":5,
+  "lwalk90":10,
+  "rwalk45":6,
+  "rwalk90":11,
+  "jump":7
+};
+let currentPlayerAnimation = enumanimations[ "idle" ];
+let playerStatus = {
+  'w':false,
+  'a':false,
+  's':false,
+  'd':false,
+  ' ':false
+
+};
 (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -5638,7 +5665,7 @@ var Utils = Utils || {};
 
     // 2.0
     // var gltfUrl = '../glTFs/glTF_version_2/Duck/glTF/Duck.gltf';
-    var gltfUrl = './common/models/scene/untitled.gltf';
+    var gltfUrl = './common/models/scene/c_bot_06_blender.gltf';
 
     var glTFLoader = new MinimalGLTFLoader.glTFLoader(gl);
 
@@ -5852,6 +5879,10 @@ var Utils = Utils || {};
     gl.depthFunc(gl.LEQUAL);
 
     var Renderer = Renderer || {};
+
+    //ADDING ANIMATIONS
+    var animationNames = ["c-bot_06_DirecX.ms3d.act"];
+    var animationSequence = [];
 
     var program = null; // current program object
 
@@ -6088,10 +6119,12 @@ var Utils = Utils || {};
 
             for (j = 0, lenj = animation.samplers.length; j < lenj; j++) {
                 animation.samplers[j].getValue(timeParameter);
+              //animation.samplers[j].getValue(0);
             }
 
-            for (j = 0, lenj = animation.channels.length; j < lenj; j++) {
+            for (j = 0, lenj = animation.channels.length; j < lenj ; j++) {
                 channel = animation.channels[j];
+              //channel = animation.channels[0];
                 animationSampler = channel.sampler;
                 node = glTF.nodes[channel.target.nodeID];
 
@@ -6120,11 +6153,15 @@ var Utils = Utils || {};
             var i, len;
 
             var glTF = scene.glTF;
+            //console.log(glTF);
             if (glTF.animations) {
                 if (playAllAnimationTogether) {
-                    for (i = 0, len = glTF.animations.length; i < len; i++) {
+                    for (i = 0, len = glTF.animations.length; i < len ; i++) {
+
                         animation = glTF.animations[i];
-                        applyAnimation(animation, glTF);
+                        //console.log(currentPlayerAnimation);
+                        if( animation.name.substring(0,1) !== "c" || i === currentPlayerAnimation  )
+                           applyAnimation(animation, glTF);
                     }
                 } else {
                     animation = glTF.animations[curAnimationId];
@@ -6178,6 +6215,7 @@ var Utils = Utils || {};
 
         var timeStampZero = performance.now();
         var timeParameter = 0;
+        var keys = [];
 
         // -- Render loop
         // function render() {
@@ -6192,19 +6230,70 @@ var Utils = Utils || {};
 
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].set(scale, s, s, s);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].identity(modelView);
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].translate(modelView, modelView, translate);
 
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateX(modelView, modelView, eulerX);
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(modelView, modelView, r);
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].scale(modelView, modelView, scale);
 
+         /*   __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateX(modelView, modelView, eulerX);
+            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(modelView, modelView, r);*/
+         //   __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].scale(modelView, modelView, scale);
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(modelView, modelView, modelMatrix);
 
-            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(modelView, modelView, eulerY);
+            let mat = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].create();
+          __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].identity(mat);
+        /* __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].translate(mat, mat, [scenes[ 0 ].glTF.nodes[102].matrix[12] ,scenes[ 0 ].glTF.nodes[102].matrix[13],
+            scenes[ 0 ].glTF.nodes[102].matrix[14]]);*/
 
+          let cameraLookAtObject = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].create();
+          __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].identity(cameraLookAtObject);
+          //console.log('translate '+ translate);
+          __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].lookAt(cameraLookAtObject,
+             [ scenes[ 0 ].glTF.nodes[102].matrix[12]+lookatTranslation[0],
+               scenes[ 0 ].glTF.nodes[102].matrix[13]+lookatTranslation[1],
+               scenes[ 0 ].glTF.nodes[102].matrix[14]+lookatTranslation[2] ],
+
+              [ scenes[ 0 ].glTF.nodes[102].matrix[12],
+                scenes[ 0 ].glTF.nodes[102].matrix[13],
+                scenes[ 0 ].glTF.nodes[102].matrix[14] ],
+
+              [0,1,0]);
+
+            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(mat, mat, cameraLookAtObject);
+
+         // __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].invert(mat, mat);
+
+
+            __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(modelView, modelView, mat);
+
+          //  __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(modelView, modelView, eulerY);
+         /* modelView[12] = _scenes[ 0 ].glTF.nodes[102].matrix[12]+lookatTranslation[0];
+          modelView[13] = scenes[ 0 ].glTF.nodes[102].matrix[13]+lookatTranslation[1];
+          modelView[14] = scenes[ 0 ].glTF.nodes[102].matrix[14]+lookatTranslation[2];*/
             __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(VP, perspective, modelView);
 
+            //ENCAPSULATE TODO
 
+
+
+          //    let final = __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].create();
+            //  console.log(scenes[0]);
+            //   __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].mul(final, final, scenes[0].glTF.nodes[54].matrix);
+            //   __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].translate(final, final, scenes[0].glTF.nodes[54].aabb.min);
+            //  console.log(final);
+
+         //     scenes[0].glTF.nodes[102].matrix[13]-=0.01;
+              //console.log('THIS');
+
+              //console.log(scenes[ 0 ].glTF.nodes[102].rotation );
+              let rotMatrix =  __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].create();
+              //console.log( __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].fromQuat(rotMatrix,scenes[ 0 ].glTF.nodes[102].rotation));
+              translate[0] = -scenes[ 0 ].glTF.nodes[102].matrix[12];
+              translate[1] = -scenes[ 0 ].glTF.nodes[102].matrix[13]-5;
+              translate[2] = -scenes[ 0 ].glTF.nodes[102].matrix[14]+5;
+
+             // translate[0] = final[12];
+              //translate[1] = final[13];
+             // translate[2] = final[14];
+
+              //ENCAPSULATE TODO
             for (i = 0, len = scenes.length; i < len; i++) {
                 curScene = scenes[i];
 
@@ -6231,6 +6320,7 @@ var Utils = Utils || {};
 
             timeParameter = (timestamp - timeStampZero) * 0.001;
             requestAnimationFrame(render);
+
         }
 
     })();
@@ -6242,28 +6332,118 @@ var Utils = Utils || {};
             Renderer.render();
         });
     };
-
+  /*
   window.onwheel = function(event) {
     translate[2] += -event.deltaY * 0.001;
     // translate[2] *= 1 + (-event.deltaY * 0.01);
-  };
+  };*/
+
+  document.addEventListener("keydown", function(e){
+    if (e.key == "w") {
+      playerStatus['w'] = true;
+    }
+    if (e.key == "s") {
+      playerStatus['s'] = true;
+    }
+    if (e.key == "d") {
+      playerStatus['d'] = true;
+    }
+    if (e.key == "a") {
+      playerStatus['a'] = true;
+    }
+    if (e.key == " ") {
+      playerStatus[' '] = true;
+    }
+
+  });
+
+  document.addEventListener("keyup", function(e){
+    if (e.key == "w") {
+      playerStatus['w'] = false;
+    }
+    if (e.key == "s") {
+      playerStatus['s'] = false;
+    }
+    if (e.key == "d") {
+      playerStatus['d'] = false;
+    }
+    if (e.key == "a") {
+      playerStatus['a'] = false;
+    }
+    if (e.key == " ") {
+      playerStatus[' '] = false;
+    }
+  });
+
+  function rotatePoint(point, center, angleX, angleY, angleZ){
+
+    //angle = (angle ) * (Math.PI/180); // Convert to radians
+    //pos = the point you want to rotate
+    //other = the point you want to rotate around
+
+    //pos -= other
+
+    //length = length(pos)
+    //pos /= length  normalize
+
+    //pos = rotate(pos, axis, amount)
+
+   // pos *= length
+
+    //pos += other
+
+
+    rotateX(point, point, center, angleX);
+
+    point = [point[0]+center[0],point[1]+center[1],point[2]+center[2]];
+
+    return point;
+
+  }
     window.onmousemove = function( e ){
       if(document.pointerLockElement === canvas ||
           document.mozPointerLockElement === canvas) {
 
+
         const dx = e.movementX;
         const dy = e.movementY;
+        //__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].fromMat4
+        __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateY(
+                                                                scenes[ 0 ].glTF.nodes[102].matrix,
+                                                                scenes[ 0 ].glTF.nodes[102].matrix,
+                                                                -dx * 0.001 );
+
+        let tmp = [scenes[ 0 ].glTF.nodes[102].matrix[12],
+                   scenes[ 0 ].glTF.nodes[102].matrix[13],
+                   scenes[ 0 ].glTF.nodes[102].matrix[14]];
+
+        let ij = [scenes[ 0 ].glTF.nodes[102].matrix[12]+lookatTranslation[0],
+                  scenes[ 0 ].glTF.nodes[102].matrix[13]+lookatTranslation[1],
+                  scenes[ 0 ].glTF.nodes[102].matrix[14]+lookatTranslation[2]];
+
+        __WEBPACK_IMPORTED_MODULE_0_gl_matrix__["vec3"].rotateY(ij, ij, tmp, -dx * 0.001);
+
+        lookatTranslation = [
+            ij[0]-tmp[0],
+            ij[1]-tmp[1],
+            ij[2]-tmp[2]
+        ];
+        //console.log(lookatTranslation);
+        //__WEBPACK_IMPORTED_MODULE_0_gl_matrix__["mat4"].rotateZ(scenes[ 0 ].glTF.nodes[102].matrix,scenes[ 0 ].glTF.nodes[102].matrix, );
         eulerX += dy * 0.001;
         eulerY += dx * 0.001;
+
       }
     };
   window.onmousedown = function(event) {
     let a = document.querySelector("canvas"); a.requestPointerLock();
-    scenes[ 0 ].glTF.nodes[125].matrix[12] = 0;
-    scenes[ 0 ].glTF.nodes[125].matrix[13] = 0;
-    scenes[ 0 ].glTF.nodes[125].matrix[14] = 0;
-    console.log(scenes[0]);
+   console.log(scenes[ 0 ].glTF);
+    translate[0] = scenes[ 0 ].glTF.nodes[102].matrix[12];
+    translate[1] = scenes[ 0 ].glTF.nodes[102].matrix[13]-5;
+    translate[2] = scenes[ 0 ].glTF.nodes[102].matrix[14]+5;
+   // console.log(scenes[ 0 ].glTF.nodes[102]);
 
+    //TODO ANGLE
   };
   /*
   window.onmouseup = function(event) {
@@ -6306,91 +6486,169 @@ var Utils = Utils || {};
   };
   window.onkeydown = function( event ){ //TODO BROWSER INDEPENDENT KEYMAPPING, prevent space default
     //TODO MOVE THIS CONSTANT
-    const playerspeed = 0.05;
-    function collision(){
-      let collision = false;
-      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
-        if(scenes[0].glTFScene.nodes[58].bvh.min[0] < scenes[0].glTFScene.nodes[i].bvh.min[0]) {
-          collision = true;
-          console.log(scenes[0].glTF.nodes[i]);
-          return collision;
-        }
-      }
-      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
-        if(scenes[0].glTFScene.nodes[58].bvh.min[1] < scenes[0].glTFScene.nodes[i].bvh.min[1]){
-          collision = true;
-          console.log(scenes[0].glTF.nodes[i] + " second< ");
-          return collision;
-        }
-      }
-      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
-        if(scenes[0].glTFScene.nodes[58].bvh.min[2] < scenes[0].glTFScene.nodes[i].bvh.min[2]){
-          collision = true;
-          console.log(scenes[0].glTF.nodes[i] + " third ");
-          return collision;
-        }
-      }
-      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
-        if(scenes[0].glTFScene.nodes[58].bvh.max[0] > scenes[0].glTFScene.nodes[i].bvh.max[0]){
-          console.log(scenes[0].glTF.nodes[i] + " forth ");
-          collision = true;
-          return collision;
-        }
-      }
-      for(let i = 1; i < scenes[0].glTFScene.nodes.length - 1; i++){
-        if(scenes[0].glTFScene.nodes[58].bvh.max[1] > scenes[0].glTFScene.nodes[i].bvh.max[1]){
-          console.log(scenes[0].glTF.nodes[i] + " fifth " );
-          collision = true;
-          return collision;
-        }
-      }
-      for(let i = 1; i < scenes[0].glTF.nodes.length - 1; i++){
-        if(scenes[0].glTF.nodes[58].bvh.max[2] > scenes[0].glTF.nodes[i].bvh.max[2]){
-          console.log(scenes[0].glTF.nodes[i] + " sixth " );
-          collision = true;
-          return collision;
-        }
-      }
-      return collision;
-    }
-    if(!collision()) {
+    const playerspeed = 0.2;
+
       keydown = true;
       if (event.key == "w") {
-        translate[2] += playerspeed;
+        playerStatus['w'] = true;
       }
       if (event.key == "s") {
-        translate[2] -= playerspeed;
+        playerStatus['s'] = true;
       }
       if (event.key == "d") {
-        translate[0] -= playerspeed;
+        playerStatus['d'] = true;
       }
       if (event.key == "a") {
-        translate[0] += playerspeed;
+        playerStatus['a'] = true;
       }
       if (event.key == " ") {
-        translate[1] -= playerspeed;
+        playerStatus[' '] = true;
       }
-      scenes[0].glTF.nodes[125].matrix[12] = -translate[0] - 3;
-      scenes[0].glTF.nodes[125].matrix[13] = -translate[1] - 1.5;
-      scenes[0].glTF.nodes[125].matrix[14] = -translate[2] - 1;
-      scenes[0].glTF.nodes[125].bvh.min[0] = -translate[0] + 0.07;
-      scenes[0].glTF.nodes[125].bvh.min[1] = -translate[1] + 0.07;
-      scenes[0].glTF.nodes[125].bvh.min[2] = -translate[2] + 0.07;
-      scenes[0].glTF.nodes[125].bvh.max[0] = -translate[2] + 0.7;
-      scenes[0].glTF.nodes[125].bvh.max[1] = -translate[2] + 0.7;
-      scenes[0].glTF.nodes[125].bvh.max[2] = -translate[2] + 0.7;
+      /*
+      * "idle":4,
+  "walk":8,
+  "lwalk45":5,
+  "lwalk90":10,
+  "rwalk45":6,
+  "rwalk90":11,
+  "jump":7
+      * */
+
+      if( playerStatus['w'] ) currentPlayerAnimation = enumanimations["walk"];
+      if( playerStatus['s'] ) currentPlayerAnimation = enumanimations["walk"];
+      if( playerStatus['a'] ) currentPlayerAnimation = enumanimations["lwalk90"];
+      if( playerStatus['d'] ) currentPlayerAnimation = enumanimations["lwalk90"];
+      if( playerStatus['w'] && playerStatus['d'] ) currentPlayerAnimation = enumanimations["lwalk45"];
+      if( playerStatus['w'] && playerStatus['a'] ) currentPlayerAnimation = enumanimations["rwalk45"];
+      if( playerStatus['s'] && playerStatus['a'] ) currentPlayerAnimation = enumanimations["lwalk45"];
+      if( playerStatus['s'] && playerStatus['d'] ) currentPlayerAnimation = enumanimations["rwalk45"];
+      if( playerStatus[' '] ) currentPlayerAnimation = enumanimations["jump"];
+      if( !playerStatus['w'] && !playerStatus['d'] && !playerStatus['a'] && !playerStatus['s'] && !playerStatus[' '] ) currentPlayerAnimation = enumanimations["idle"];
+
+      if(initem()) {
+        if (playerStatus['w']) {
+          scenes[0].glTF.nodes[102].matrix[12] -= scenes[0].glTF.nodes[102].matrix[0] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] -= scenes[0].glTF.nodes[102].matrix[1] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] -= scenes[0].glTF.nodes[102].matrix[2] * playerspeed;
+          //    lookatTranslation[2] += playerspeed;
+        }
+        if (playerStatus['s']) {
+          scenes[0].glTF.nodes[102].matrix[12] += scenes[0].glTF.nodes[102].matrix[0] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] += scenes[0].glTF.nodes[102].matrix[1] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] += scenes[0].glTF.nodes[102].matrix[2] * playerspeed;
+          //  lookatTranslation[2] -= playerspeed;
+        }
+        if (playerStatus['d']) {
+          scenes[0].glTF.nodes[102].matrix[12] -= scenes[0].glTF.nodes[102].matrix[8] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] -= scenes[0].glTF.nodes[102].matrix[9] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] -= scenes[0].glTF.nodes[102].matrix[10] * playerspeed;
+
+          //  lookatTranslation[0] -= playerspeed;
+        }
+        if (playerStatus['a']) {
+          scenes[0].glTF.nodes[102].matrix[12] += scenes[0].glTF.nodes[102].matrix[8] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] += scenes[0].glTF.nodes[102].matrix[9] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] += scenes[0].glTF.nodes[102].matrix[10] * playerspeed;
+          //  lookatTranslation[0] += playerspeed;
+        }
+        if (playerStatus[' ']) {
+          scenes[0].glTF.nodes[102].matrix[12] += scenes[0].glTF.nodes[102].matrix[4] * playerspeed * 2;
+          scenes[0].glTF.nodes[102].matrix[13] += scenes[0].glTF.nodes[102].matrix[5] * playerspeed * 2;
+          scenes[0].glTF.nodes[102].matrix[14] += scenes[0].glTF.nodes[102].matrix[6] * playerspeed * 2;
+          // lookatTranslation[1] += playerspeed;
+        }
+      }else{
+        if (playerStatus['w']) {
+          scenes[0].glTF.nodes[102].matrix[12] += scenes[0].glTF.nodes[102].matrix[0] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] += scenes[0].glTF.nodes[102].matrix[1] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] += scenes[0].glTF.nodes[102].matrix[2] * playerspeed;
+          //    lookatTranslation[2] += playerspeed;
+        }
+        if (playerStatus['s']) {
+          scenes[0].glTF.nodes[102].matrix[12] -= scenes[0].glTF.nodes[102].matrix[0] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] -= scenes[0].glTF.nodes[102].matrix[1] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] -= scenes[0].glTF.nodes[102].matrix[2] * playerspeed;
+          //  lookatTranslation[2] -= playerspeed;
+        }
+        if (playerStatus['d']) {
+          scenes[0].glTF.nodes[102].matrix[12] += scenes[0].glTF.nodes[102].matrix[8] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] += scenes[0].glTF.nodes[102].matrix[9] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] += scenes[0].glTF.nodes[102].matrix[10] * playerspeed;
+
+          //  lookatTranslation[0] -= playerspeed;
+        }
+        if (playerStatus['a']) {
+          scenes[0].glTF.nodes[102].matrix[12] -= scenes[0].glTF.nodes[102].matrix[8] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[13] -= scenes[0].glTF.nodes[102].matrix[9] * playerspeed;
+          scenes[0].glTF.nodes[102].matrix[14] -= scenes[0].glTF.nodes[102].matrix[10] * playerspeed;
+          //  lookatTranslation[0] += playerspeed;
+        }
+        if (playerStatus[' ']) {
+          scenes[0].glTF.nodes[102].matrix[12] -= scenes[0].glTF.nodes[102].matrix[4] * playerspeed * 2;
+          scenes[0].glTF.nodes[102].matrix[13] -= scenes[0].glTF.nodes[102].matrix[5] * playerspeed * 2;
+          scenes[0].glTF.nodes[102].matrix[14] -= scenes[0].glTF.nodes[102].matrix[6] * playerspeed * 2;
+          // lookatTranslation[1] += playerspeed;
+        }
+      }
+
+     /* scenes[0].glTF.nodes[50].matrix[12] = -translate[0] - 3;
+      scenes[0].glTF.nodes[50].matrix[13] = -translate[1] - 1.5;
+      scenes[0].glTF.nodes[50].matrix[14] = -translate[2] - 1;
+      //scenes[0].glTF.nodes[125].bvh.min[0] = -translate[0] + 0.07;
+      //scenes[0].glTF.nodes[125].bvh.min[1] = -translate[1] + 0.07;
+      //scenes[0].glTF.nodes[125].bvh.min[2] = -translate[2] + 0.07;
+      //scenes[0].glTF.nodes[125].bvh.max[0] = -translate[2] + 0.7;
+      //scenes[0].glTF.nodes[125].bvh.max[1] = -translate[2] + 0.7;
+      //scenes[0].glTF.nodes[125].bvh.max[2] = -translate[2] + 0.7;
       scenes[0].glTF.nodes[125].bvh.transform[12] = -translate[0] + 0.07;
       scenes[0].glTF.nodes[125].bvh.transform[13] = -translate[1] + 0.07;
       scenes[0].glTF.nodes[125].bvh.transform[14] = -translate[2] + 0.07;
-    }
+*/
 
   };
   window.onkeyup = function( event ){
     keydown = false;
+    if (event.key == "w") {
+      playerStatus['w'] = false;
+    }
+    if (event.key == "s") {
+      playerStatus['s'] = false;
+    }
+    if (event.key == "d") {
+      playerStatus['d'] = false;
+    }
+    if (event.key == "a") {
+      playerStatus['a'] = false;
+    }
+    if (event.key == " ") {
+      playerStatus[' '] = false;
+    }
+      if( playerStatus['w'] ) currentPlayerAnimation = enumanimations["walk"];
+      if( playerStatus['s'] ) currentPlayerAnimation = enumanimations["walk"];
+      if( playerStatus['a'] ) currentPlayerAnimation = enumanimations["lwalk90"];
+      if( playerStatus['d'] ) currentPlayerAnimation = enumanimations["lwalk90"];
+      if( playerStatus['w'] && playerStatus['d'] ) currentPlayerAnimation = enumanimations["lwalk45"];
+      if( playerStatus['w'] && playerStatus['a'] ) currentPlayerAnimation = enumanimations["rwalk45"];
+      if( playerStatus['s'] && playerStatus['a'] ) currentPlayerAnimation = enumanimations["lwalk45"];
+      if( playerStatus['s'] && playerStatus['d'] ) currentPlayerAnimation = enumanimations["rwalk45"];
+      if( playerStatus[' '] ) currentPlayerAnimation = enumanimations["jump"];
+      if( !playerStatus['w'] && !playerStatus['d'] && !playerStatus['a'] && !playerStatus['s'] && !playerStatus[' '] ) currentPlayerAnimation = enumanimations["idle"];
   };
     CUBE_MAP.loadAll();
 
-
+    function initem() {
+      for(let i = 0; i < 63; i++){
+        if(scenes[0].glTF.nodes[i].bvh.min[0] <= scenes[0].glTF.nodes[102].matrix[12] && scenes[0].glTF.nodes[102].matrix[12] <= scenes[0].glTF.nodes[i].bvh.max[0] &&
+            scenes[0].glTF.nodes[i].bvh.min[1] <= scenes[0].glTF.nodes[102].matrix[13] && scenes[0].glTF.nodes[102].matrix[13] <= scenes[0].glTF.nodes[i].bvh.max[1] &&
+            scenes[0].glTF.nodes[i].bvh.min[2] <= scenes[0].glTF.nodes[102].matrix[14] && scenes[0].glTF.nodes[102].matrix[14] <= scenes[0].glTF.nodes[i].bvh.max[2] &&
+        scenes[0].glTF.nodes[i].name !== "Sun" && !scenes[0].glTF.nodes[i].name.includes("sky") && !scenes[0].glTF.nodes[i].name.includes("lamp")) {
+          console.log(scenes[0].glTF.nodes[i].bvh.min, scenes[0].glTF.nodes[i].bvh.max, scenes[0].glTF.nodes[i].name);
+          console.log(scenes[0].glTF.nodes[102].matrix[12], scenes[0].glTF.nodes[102].matrix[13], scenes[0].glTF.nodes[102].matrix[14]);
+          return false;
+        }
+      }
+      return true;
+    }
 
 })();
 
